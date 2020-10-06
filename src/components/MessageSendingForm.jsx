@@ -1,6 +1,9 @@
 import React from "react";
 import "../App.css";
-import { sendUserMessage } from "../eventsListen/eventsListener";
+import {
+  sendUserMessage,
+  messageListener,
+} from "../eventsListen/eventsListener";
 
 class MessageForm extends React.Component {
   constructor(props) {
@@ -11,7 +14,7 @@ class MessageForm extends React.Component {
       <div className="messageForm">
         <form>
           <input id="inputWithMessageFromClient"></input>
-          <button type="button" onClick={sendUserMessage}>
+          <button type="button" onClick={messageListener}>
             Send message
           </button>
         </form>

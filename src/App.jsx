@@ -5,9 +5,10 @@ import UsersBlock from "./components/UsersBlock";
 import MessageForm from "./components/MessageSendingForm";
 
 function App() {
+  const handleSendClick = () => {};
   return (
     <div className="App">
-      <MessageForm />
+      <MessageForm onSendClick={handleSendClick} />
       <MessageBox />
       <UsersBlock />
     </div>

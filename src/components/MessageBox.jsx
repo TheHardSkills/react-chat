@@ -1,16 +1,15 @@
 import React from "react";
-import Message from "./Message";
+// import Message from "./Message";
 
 class MessageBox extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      arrMsgs: [],
-    };
-    this.key = 0;
-  }
+  state = {
+    arrMsgs: [],
+  };
+  key = 0;
+
   componentDidMount() {
     this.getAllMessages();
+    console.log("dsgjhsd");
   }
   getAllMessages() {
     fetch("https://jsonplaceholder.typicode.com/comments")
@@ -23,10 +22,10 @@ class MessageBox extends React.Component {
   render() {
     return (
       <div className="MessageBox">
-        {this.state.arrMsgs.map((msg) => {
+        {/* {this.state.arrMsgs.map((msg) => {
           this.key++;
           return <Message text={msg.body} key={this.key} />;
-        })}
+        })} */}
       </div>
     );
   }
