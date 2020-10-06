@@ -7,7 +7,7 @@ class Message extends React.Component {
   }
   render() {
     return (
-      <div class="messageBlock">
+      <div className="messageBlock">
         <p>{this.props.text}</p>
       </div>
     );

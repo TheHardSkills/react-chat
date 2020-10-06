@@ -7,6 +7,7 @@ class MessageBox extends React.Component {
     this.state = {
       arrMsgs: [],
     };
+    this.key = 0;
   }
   componentDidMount() {
     this.getAllMessages();
@@ -22,9 +23,10 @@ class MessageBox extends React.Component {
   render() {
     return (
       <div className="MessageBox">
-        {this.state.arrMsgs.map((msg) => (
-          <Message text={msg.body} />
-        ))}
+        {this.state.arrMsgs.map((msg) => {
+          this.key++;
+          return <Message text={msg.body} key={this.key} />;
+        })}
       </div>
     );
   }

@@ -7,7 +7,7 @@ class User extends React.Component {
   }
   render() {
     return (
-      <div class="userBlock">
+      <div className="userBlock">
         <p>{this.props.text}</p>
       </div>
     );

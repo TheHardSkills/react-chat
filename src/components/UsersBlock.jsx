@@ -7,6 +7,7 @@ class UsersBlock extends React.Component {
     this.state = {
       arrMsgs: [],
     };
+    this.key = 0;
   }
   getAllUsers() {
     fetch("https://jsonplaceholder.typicode.com/comments")
@@ -22,9 +23,10 @@ class UsersBlock extends React.Component {
   render() {
     return (
       <div className="UsersBlock">
-        {this.state.arrMsgs.map((msg) => (
-          <User text={msg.email} />
-        ))}
+        {this.state.arrMsgs.map((msg) => {
+          this.key++;
+          return <User text={msg.email} key={this.key} />;
+        })}
       </div>
     );
   }

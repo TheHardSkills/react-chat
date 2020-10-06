@@ -17,13 +17,13 @@
 .MessageBox {
   width: 40%;
   display: inline-block;
-  /* height: 900px;
-  overflow: auto; */
+  height: 900px;
+  overflow: auto;
 }
 .UsersBlock {
   width: 40%;
   display: inline-block;
   margin-left: 5%;
-  /* height: 900px; */
-  /* overflow: auto; */
+  height: 900px;
+  overflow: auto;
 }
