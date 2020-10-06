@@ -1,17 +1,14 @@
 import React from "react";
-import Message from "./Message";
+import User from "./User";
 
-class MessageBox extends React.Component {
+class UsersBlock extends React.Component {
   constructor() {
     super();
     this.state = {
       arrMsgs: [],
     };
   }
-  componentDidMount() {
-    this.getAllMessages();
-  }
-  getAllMessages() {
+  getAllUsers() {
     fetch("https://jsonplaceholder.typicode.com/comments")
       .then((response) => response.json())
       .then((data) => {
@@ -19,15 +16,18 @@ class MessageBox extends React.Component {
         this.setState({ arrMsgs: data });
       });
   }
+  componentDidMount() {
+    this.getAllUsers();
+  }
   render() {
     return (
-      <div className="MessageBox">
+      <div className="UsersBlock">
         {this.state.arrMsgs.map((msg) => (
-          <Message text={msg.body} />
+          <User text={msg.email} />
         ))}
       </div>
     );
   }
 }
 
-export default MessageBox;
+export default UsersBlock;

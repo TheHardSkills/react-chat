@@ -1,17 +1,17 @@
 import React from "react";
 import "../App.css";
 
-class Message extends React.Component {
+class User extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
-      <div class="messageBlock">
+      <div class="userBlock">
         <p>{this.props.text}</p>
       </div>
     );
   }
 }
 
-export default Message;
+export default User;
