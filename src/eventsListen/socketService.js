@@ -1,7 +1,7 @@
 import io from "socket.io-client";
 
 const currentToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pblN0YXR1cyI6dHJ1ZSwib25NdXRlIjpmYWxzZSwidXNlcm5hbWUiOiJLaW8iLCJpZCI6IjVmNzQ0YTMxODljMjg4MTU4NzNmNDZmYyIsImlhdCI6MTYwMTk5ODMxOSwiZXhwIjoxNjAyMDg0NzE5fQ._xhfa4AEjQDS_2DejedQzggg-m9M_jfy7HckzjVDUxc";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pblN0YXR1cyI6dHJ1ZSwib25NdXRlIjpmYWxzZSwidXNlcm5hbWUiOiJLaW8iLCJpZCI6IjVmNzQ0YTMxODljMjg4MTU4NzNmNDZmYyIsImlhdCI6MTYwMjA4NjU0OCwiZXhwIjoxNjAyMTcyOTQ4fQ.19pfcKDtbe_-aXZ0Y3SnrwDecfz2SgyTSVzUm0WNKHw";
 const socket = io(`http://localhost:3002/?token=${currentToken}`);
 
 const sendUserMessage = (messageText) => {
