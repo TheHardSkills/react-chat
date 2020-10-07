@@ -1,20 +1,25 @@
 import React from "react";
 import "../App.css";
-import {
-  sendUserMessage,
-  messageListener,
-} from "../eventsListen/eventsListener";
 
 class MessageForm extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  state = {
+    inputText: "",
+  };
+
+  handleChange = (e) => {
+    this.setState({ inputText: e.target.value });
+  };
+
+  handleSend = () => {
+    this.props.onSendClick(this.state.inputText);
+  };
+
   render() {
     return (
       <div className="messageForm">
         <form>
-          <input id="inputWithMessageFromClient"></input>
-          <button type="button" onClick={messageListener}>
+          <input value={this.state.inputText} onChange={this.handleChange} />
+          <button type="button" onClick={this.handleSend}>
             Send message
           </button>
         </form>

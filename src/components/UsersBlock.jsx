@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import User from "./User";
 
 class UsersBlock extends React.Component {

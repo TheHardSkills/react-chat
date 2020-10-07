@@ -1,33 +1,44 @@
 import React from "react";
-// import Message from "./Message";
+import Message from "./Message";
 
-class MessageBox extends React.Component {
-  state = {
-    arrMsgs: [],
-  };
-  key = 0;
+// class MessageBox extends React.Component {
+//   componentDidMount() {
+//     console.log("dsgjhsd");
+//   }
 
-  componentDidMount() {
-    this.getAllMessages();
-    console.log("dsgjhsd");
-  }
-  getAllMessages() {
-    fetch("https://jsonplaceholder.typicode.com/comments")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        this.setState({ arrMsgs: data });
-      });
-  }
-  render() {
+//   render() {
+//     if (this.props.messages) {
+//       console.log("this.props.messages", this.props.messages);
+//       return (
+//         <div className="MessageBox">
+//           {this.props.messages.map((message, i) => {
+//             console.log("message = ", message);
+//             return <Message message={message.messageText} key={i} />;
+//           })}
+//         </div>
+//       );
+//     } else {
+//       return <Message message="no one msg" key={this.key} />;
+//     }
+//   }
+// }
+
+// export default MessageBox;
+
+///////////////////////////////////////////
+
+function MessageBox(props) {
+  if (props.messages) {
+    console.log("props.messages", props.messages);
     return (
       <div className="MessageBox">
-        {/* {this.state.arrMsgs.map((msg) => {
-          this.key++;
-          return <Message text={msg.body} key={this.key} />;
-        })} */}
+        {props.messages.map((message, i) => {
+          return <Message message={message.messageText} key={i} />;
+        })}
       </div>
     );
+  } else {
+    return <Message message="no one msg" key="1" />;
   }
 }
 

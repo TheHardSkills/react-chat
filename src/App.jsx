@@ -1,15 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import MessageBox from "./components/MessageBox";
 import UsersBlock from "./components/UsersBlock";
 import MessageForm from "./components/MessageSendingForm";
 
+import {
+  sendUserMessage,
+  subscribeToMessages,
+  unsubscribe,
+} from "./eventsListen/socketService";
+import { useEffect } from "react";
+import { useCallback } from "react";
+
 function App() {
-  const handleSendClick = () => {};
+  // const [msgObj, setMsg] = useState(null);
+  const [messages, setMessages] = useState([]);
+
+  const handleSendClick = useCallback((text) => {
+    console.log(text);
+    sendUserMessage(text);
+  }, []);
+
+  useEffect(() => {
+    function updateMessages(message) {
+      setMessages((messages) => [...messages, message]);
+    }
+    subscribeToMessages(updateMessages);
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   return (
     <div className="App">
       <MessageForm onSendClick={handleSendClick} />
-      <MessageBox />
+      <MessageBox messages={messages} />
       <UsersBlock />
     </div>
   );
