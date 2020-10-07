@@ -1,31 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
 
-class MessageForm extends React.Component {
-  state = {
-    inputText: "",
+function MessageForm(props) {
+  const [inputText, setInputText] = useState("");
+  const handleChange = (e) => {
+    setInputText(e.target.value);
   };
 
-  handleChange = (e) => {
-    this.setState({ inputText: e.target.value });
+  const handleSend = () => {
+    props.onSendClick(inputText);
   };
-
-  handleSend = () => {
-    this.props.onSendClick(this.state.inputText);
-  };
-
-  render() {
-    return (
-      <div className="messageForm">
-        <form>
-          <input value={this.state.inputText} onChange={this.handleChange} />
-          <button type="button" onClick={this.handleSend}>
-            Send message
-          </button>
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div className="messageForm">
+      <form>
+        <input value={inputText} onChange={handleChange} />
+        <button type="button" onClick={handleSend}>
+          Send message
+        </button>
+      </form>
+    </div>
+  );
 }
 
 export default MessageForm;

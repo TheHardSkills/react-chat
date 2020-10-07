@@ -14,13 +14,6 @@ const sendUserMessage = (messageText) => {
     return;
   }
   socket.emit("chat message", messageText);
-  console.log("messageText", messageText);
-};
-
-const subscribeToMessages = (cb) => {
-  socket.on("message", (msgInfo) => {
-    cb(msgInfo);
-  });
 };
 
 const showOnlineUsers = (cbck) => {
@@ -42,7 +35,6 @@ const unsubscribe = () => {
 export {
   sendUserMessage,
   unsubscribe,
-  subscribeToMessages,
   showOnlineUsers,
   downloadMessageHistory,
 };

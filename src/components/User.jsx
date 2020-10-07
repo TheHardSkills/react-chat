@@ -2,8 +2,6 @@ import React from "react";
 import "../App.css";
 
 function User(props) {
-  console.log("props", props);
-
   return (
     <>
       {props.user ? (

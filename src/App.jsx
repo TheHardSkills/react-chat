@@ -6,7 +6,6 @@ import MessageForm from "./components/MessageSendingForm";
 
 import {
   sendUserMessage,
-  subscribeToMessages,
   unsubscribe,
   showOnlineUsers,
   downloadMessageHistory,
@@ -19,7 +18,6 @@ function App() {
   const [historyMessages, setHistoryMessages] = useState([]);
 
   const handleSendClick = useCallback((text) => {
-    console.log(text);
     sendUserMessage(text);
   }, []);
 

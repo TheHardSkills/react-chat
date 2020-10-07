@@ -2,7 +2,6 @@ import React from "react";
 import User from "./User";
 
 function UsersBlock(props) {
-  console.log("props.users", props.users);
   return (
     <>
       {props.users ? (
