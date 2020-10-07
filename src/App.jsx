@@ -8,24 +8,37 @@ import {
   sendUserMessage,
   subscribeToMessages,
   unsubscribe,
+  showOnlineUsers,
+  downloadMessageHistory,
 } from "./eventsListen/socketService";
 import { useEffect } from "react";
 import { useCallback } from "react";
 
 function App() {
-  // const [msgObj, setMsg] = useState(null);
-  const [messages, setMessages] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [historyMessages, setHistoryMessages] = useState([]);
 
   const handleSendClick = useCallback((text) => {
     console.log(text);
     sendUserMessage(text);
   }, []);
 
+  //componentDidMount
   useEffect(() => {
-    function updateMessages(message) {
-      setMessages((messages) => [...messages, message]);
+    function updateUsers(users) {
+      setUsers(users);
     }
-    subscribeToMessages(updateMessages);
+    showOnlineUsers(updateUsers);
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
+    function renderHistoryMessages(messages) {
+      setHistoryMessages(messages);
+    }
+    downloadMessageHistory(renderHistoryMessages);
     return () => {
       unsubscribe();
     };
@@ -34,8 +47,8 @@ function App() {
   return (
     <div className="App">
       <MessageForm onSendClick={handleSendClick} />
-      <MessageBox messages={messages} />
-      <UsersBlock />
+      <MessageBox messages={historyMessages} />
+      <UsersBlock users={users} />
     </div>
   );
 }
