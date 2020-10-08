@@ -1,52 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
-import MessageBox from "./components/MessageBox";
-import UsersBlock from "./components/UsersBlock";
-import MessageForm from "./components/MessageSendingForm";
+import ChatPage from "./components/ChatPage";
+import LoginPage from "./components/LoginPage";
 
-import {
-  sendUserMessage,
-  unsubscribe,
-  showOnlineUsers,
-  downloadMessageHistory,
-} from "./eventsListen/socketService";
-import { useEffect } from "react";
-import { useCallback } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 function App() {
-  const [users, setUsers] = useState([]);
-  const [historyMessages, setHistoryMessages] = useState([]);
-
-  const handleSendClick = useCallback((text) => {
-    sendUserMessage(text);
-  }, []);
-
-  //componentDidMount
-  useEffect(() => {
-    function updateUsers(users) {
-      setUsers(users);
-    }
-    showOnlineUsers(updateUsers);
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
-  useEffect(() => {
-    function renderHistoryMessages(messages) {
-      setHistoryMessages(messages);
-    }
-    downloadMessageHistory(renderHistoryMessages);
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
   return (
     <div className="App">
-      <MessageForm onSendClick={handleSendClick} />
-      <MessageBox messages={historyMessages} />
-      <UsersBlock users={users} />
+      <Switch>
+        <Route path="/login" component={LoginPage} />
+        <Route path="/chat" component={ChatPage} />
+        <Redirect from="/" to="/login" />
+      </Switch>
     </div>
   );
 }
