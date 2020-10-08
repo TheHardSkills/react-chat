@@ -2,8 +2,8 @@ import React from "react";
 import "../App.css";
 
 function UserForAdmin(props) {
-    const ban = () => {
-
+    const sayStatus = () => {
+        console.log("status:");
     }
     return (
         <>
@@ -20,7 +20,7 @@ function UserForAdmin(props) {
                     {
                         props.muteStatus
                             ?
-                            <button>Unmute</button>
+                            <button onClick={sayStatus}>Unmute</button>
                             :
                             <button>Mute</button>
                     }
