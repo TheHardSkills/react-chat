@@ -1,7 +1,8 @@
 import io from "socket.io-client";
 
-const currentToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pblN0YXR1cyI6dHJ1ZSwib25NdXRlIjpmYWxzZSwidXNlcm5hbWUiOiJLaW8iLCJpZCI6IjVmNzQ0YTMxODljMjg4MTU4NzNmNDZmYyIsImlhdCI6MTYwMjA4NjU0OCwiZXhwIjoxNjAyMTcyOTQ4fQ.19pfcKDtbe_-aXZ0Y3SnrwDecfz2SgyTSVzUm0WNKHw";
+// const currentToken =
+//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pblN0YXR1cyI6dHJ1ZSwib25NdXRlIjpmYWxzZSwidXNlcm5hbWUiOiJLaW8iLCJpZCI6IjVmNzQ0YTMxODljMjg4MTU4NzNmNDZmYyIsImlhdCI6MTYwMjA4NjU0OCwiZXhwIjoxNjAyMTcyOTQ4fQ.19pfcKDtbe_-aXZ0Y3SnrwDecfz2SgyTSVzUm0WNKHw";
+const currentToken = localStorage.getItem("token");
 let socket;
 
 const connect = () => {
@@ -20,6 +21,12 @@ const sendUserMessage = (messageText) => {
   socket.emit("chat message", messageText);
 };
 
+const showAllUsers = (cbck) => {
+  socket.on("show all users", (allOnlnUsrsArr) => {
+    cbck(allOnlnUsrsArr);
+  });
+};
+
 const showOnlineUsers = (cbck) => {
   socket.on("user online", (allOnlnUsrsArr) => {
     cbck(allOnlnUsrsArr);
@@ -32,6 +39,14 @@ const downloadMessageHistory = (cbck) => {
   });
 };
 
+const muteUser = (muteUserId) => {
+  socket.emit("mute", muteUserId);
+};
+
+const banUser = (banUserId) => {
+  socket.emit("ban", banUserId);
+};
+
 const unsubscribe = () => {
   socket.close();
 };
@@ -41,5 +56,7 @@ export {
   unsubscribe,
   showOnlineUsers,
   downloadMessageHistory,
+  showAllUsers,
+  muteUser,
   connect,
 };

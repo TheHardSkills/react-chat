@@ -23,10 +23,10 @@ const sendRequestWithUserData = async (userInfo) => {
     alert(error);
     return;
   }
-  // localStorage.setItem("token", token);
-  // if (localStorage.getItem("token")) {
-  //    document.location = "http://localhost:3000/chat";
-  // }
+  localStorage.setItem("token", token);
+  if (localStorage.getItem("token")) {
+    document.location = "http://localhost:3000/chat";
+  }
 };
 
 export { sendRequestWithUserData };
