@@ -6,8 +6,8 @@ function AllUsersBlock(props) {
         <>
             {props.users ? (
                 <div className="AllUsersBlock">
-                    {props.users.map((user) => {
-                        return <UserForAdmin user={user.username} banStatus={user.onBan} muteStatus={user.onMute} />;
+                    {props.users.map((user, i) => {
+                        return <UserForAdmin user={user.username} banStatus={user.onBan} muteStatus={user.onMute} key={i} />;
                     })}
                 </div>
             ) : null}

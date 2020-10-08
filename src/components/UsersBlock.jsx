@@ -6,8 +6,8 @@ function UsersBlock(props) {
     <>
       {props.users ? (
         <div className="UsersBlock">
-          {props.users.map((user) => {
-            return <User user={user} />;
+          {props.users.map((user, i) => {
+            return <User user={user} key={i} />;
           })}
         </div>
       ) : null}
