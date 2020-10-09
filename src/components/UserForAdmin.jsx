@@ -1,10 +1,8 @@
 import React from "react";
 import "../App.css";
+import { muteUser } from "../eventsListen/socketService"
 
 function UserForAdmin(props) {
-    const sayStatus = () => {
-        console.log("status:");
-    }
     return (
         <>
             {props.user ? (
@@ -20,9 +18,9 @@ function UserForAdmin(props) {
                     {
                         props.muteStatus
                             ?
-                            <button onClick={sayStatus}>Unmute</button>
+                            <button onClick={() => { muteUser(props.userId) }}>Unmute</button>
                             :
-                            <button>Mute</button>
+                            <button onClick={() => { muteUser(props.userId) }}>Mute</button>
                     }
 
                 </div>

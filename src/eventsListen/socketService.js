@@ -39,10 +39,10 @@ const downloadMessageHistory = (cbck) => {
   });
 };
 
-const muteUser = (muteUserId) => {
-  socket.emit("mute", muteUserId);
+const muteUser = (userId) => {
+  socket.emit("mute", userId);
+  console.log("mute user id = ", userId);
 };
-
 const banUser = (banUserId) => {
   socket.emit("ban", banUserId);
 };
