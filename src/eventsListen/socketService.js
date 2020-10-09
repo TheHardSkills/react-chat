@@ -1,12 +1,11 @@
 import io from "socket.io-client";
 
-// const currentToken =
-//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pblN0YXR1cyI6dHJ1ZSwib25NdXRlIjpmYWxzZSwidXNlcm5hbWUiOiJLaW8iLCJpZCI6IjVmNzQ0YTMxODljMjg4MTU4NzNmNDZmYyIsImlhdCI6MTYwMjA4NjU0OCwiZXhwIjoxNjAyMTcyOTQ4fQ.19pfcKDtbe_-aXZ0Y3SnrwDecfz2SgyTSVzUm0WNKHw";
 const currentToken = localStorage.getItem("token");
 let socket;
 
 const connect = () => {
   socket = io(`http://localhost:3002/?token=${currentToken}`);
+  console.log("socket info", socket);
 };
 
 const sendUserMessage = (messageText) => {
@@ -47,6 +46,15 @@ const banUser = (banUserId) => {
   socket.emit("ban", banUserId);
 };
 
+const getMuteInfo = (cbck) => {
+  socket.on("muted", () => {
+    cbck(true);
+  });
+  socket.on("unmuted", () => {
+    cbck(false);
+  });
+};
+
 const unsubscribe = () => {
   socket.close();
 };
@@ -59,5 +67,6 @@ export {
   showAllUsers,
   muteUser,
   banUser,
+  getMuteInfo,
   connect,
 };

@@ -11,6 +11,8 @@ import {
     showOnlineUsers,
     downloadMessageHistory,
     showAllUsers,
+    getMuteInfo,
+
     connect,
 
 } from "../eventsListen/socketService";
@@ -21,6 +23,7 @@ function ChatPage() {
     const [users, setUsers] = useState([]);
     const [allUsers, setAllUsers] = useState([]);
     const [historyMessages, setHistoryMessages] = useState([]);
+    const [muteStatus, setMuteStatus] = useState(false);
 
     const handleSendClick = useCallback((text) => {
         sendUserMessage(text);
@@ -45,6 +48,13 @@ function ChatPage() {
             console.log("allUsers", allUsers);
         });
 
+        downloadMessageHistory((messages) => {
+            setHistoryMessages(messages);
+        });
+        getMuteInfo((banStatus) => {
+            setMuteStatus(banStatus);
+        })
+
         return () => {
             unsubscribe();
         };
@@ -52,7 +62,7 @@ function ChatPage() {
 
     return (
         <>
-            <MessageForm onSendClick={handleSendClick} />
+            <MessageForm onSendClick={handleSendClick} muteStatus={muteStatus} />
             <MessageBox messages={historyMessages} />
             <UsersBlock users={users} />
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 function MessageForm(props) {
+  console.log("props MessageForm", props);
   const [inputText, setInputText] = useState("");
 
   const handleChange = (e) => {
@@ -10,6 +11,12 @@ function MessageForm(props) {
   const resetInput = () => {
     setInputText("");
   }
+  // const dis =() =>{
+  //   if(muted true)
+  //   setButtonDisabled("true")
+  // }
+
+  //
 
   const handleSend = () => {
     props.onSendClick(inputText);
@@ -20,7 +27,7 @@ function MessageForm(props) {
     <div className="messageForm">
       <form>
         <input value={inputText} onChange={handleChange} />
-        <button type="button" onClick={handleSend}>
+        <button type="button" onClick={handleSend} disabled={props.muteStatus}>
           Send message
         </button>
       </form>
