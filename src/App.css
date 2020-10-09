@@ -19,6 +19,7 @@ body {
   background: #a3b0ec;
   border-radius: 20px;
   width: 200px;
+  opacity: 0.8;
 }
 
 .adminUserBlock {
@@ -27,9 +28,12 @@ body {
   background: #a3b0ec;
   border-radius: 20px;
   width: 200px;
+  opacity: 0.8;
 }
 
 .MessageBox {
+  border: 1px solid #a3b0ec;
+  border-radius: 20px;
   color: #a3b0ec;
   margin-top: 2%;
   margin-left: 5%;
@@ -64,11 +68,40 @@ body {
 
 input {
   font-size: medium;
+  border-radius: 10px;
+  height: 40px;
 }
 button {
   font-size: medium;
+  border-radius: 5px;
 }
 
 .author {
   font-size: small;
+}
+
+.msgsCtntUsr {
+  background-color: #dcec7f;
+  margin-top: 1%;
+  border-radius: 20px;
+  opacity: 0.6;
+  color: black;
+  margin-left: 20%;
+  margin-right: 2%;
+  border: 1px solid #dcec7f;
+}
+
+.msgsOthrUsrs {
+  background-color: #ee944b;
+  border: 1px solid #ee944b;
+  border-radius: 20px;
+  opacity: 0.6;
+  color: black;
+  margin-right: 20%;
+  margin-left: 2%;
+  margin-top: 1%;
+}
+
+p {
+  opacity: 1;
 }

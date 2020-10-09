@@ -5,6 +5,7 @@ let socket;
 
 const connect = () => {
   socket = io(`http://localhost:3002/?token=${currentToken}`);
+  console.log("socket", socket.io);
 };
 
 const sendUserMessage = (messageText) => {

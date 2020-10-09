@@ -34,11 +34,11 @@ function ChatPage() {
     //componentDidMount
     useEffect(() => {
         connect();
-        function updateUsers(users) {
-            setUsers(users);
 
+        function updateUsersOnline(users) {
+            setUsers(users);
         }
-        showOnlineUsers(updateUsers);
+        showOnlineUsers(updateUsersOnline);
 
         downloadMessageHistory((messages) => {
             setHistoryMessages(messages);
@@ -64,11 +64,12 @@ function ChatPage() {
             unsubscribe();
         };
     }, []);
+    const currentUsername = localStorage.getItem("username");
 
     return (
         <>
             <MessageForm onSendClick={handleSendClick} muteStatus={muteStatus} />
-            <MessageBox messages={historyMessages} />
+            <MessageBox messages={historyMessages} currentUserName={currentUsername} />
             <UsersBlock users={users} />
 
             { allUsers

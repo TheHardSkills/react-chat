@@ -19,6 +19,7 @@ function LoginPage() {
 
     const handleSendClick = () => {
         sendRequestWithUserData({ inputUsername, inputPassword });
+        localStorage.setItem("username", inputUsername);
         history.push("/chat");
     };
 
