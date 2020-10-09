@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import { muteUser } from "../eventsListen/socketService"
+import { muteUser, banUser } from "../eventsListen/socketService"
 
 function UserForAdmin(props) {
     return (
@@ -11,9 +11,9 @@ function UserForAdmin(props) {
                     {
                         props.banStatus
                             ?
-                            <button>Unban</button>
+                            <button onClick={() => { banUser(props.userId) }}>Unban</button>
                             :
-                            <button>Ban</button>
+                            <button onClick={() => { banUser(props.userId) }}>Ban</button>
                     }
                     {
                         props.muteStatus

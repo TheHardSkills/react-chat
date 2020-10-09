@@ -58,5 +58,6 @@ export {
   downloadMessageHistory,
   showAllUsers,
   muteUser,
+  banUser,
   connect,
 };
