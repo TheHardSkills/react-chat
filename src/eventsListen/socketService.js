@@ -5,7 +5,6 @@ let socket;
 
 const connect = () => {
   socket = io(`http://localhost:3002/?token=${currentToken}`);
-  console.log("socket info", socket);
 };
 
 const sendUserMessage = (messageText) => {
@@ -40,7 +39,6 @@ const downloadMessageHistory = (cbck) => {
 
 const muteUser = (userId) => {
   socket.emit("mute", userId);
-  console.log("mute user id = ", userId);
 };
 const banUser = (banUserId) => {
   socket.emit("ban", banUserId);
@@ -59,6 +57,12 @@ const unsubscribe = () => {
   socket.close();
 };
 
+const disconnect = () => {
+  socket.on("disconnect", () => {
+    document.location = "http://localhost:3000/";
+  });
+};
+
 export {
   sendUserMessage,
   unsubscribe,
@@ -68,5 +72,6 @@ export {
   muteUser,
   banUser,
   getMuteInfo,
+  disconnect,
   connect,
 };

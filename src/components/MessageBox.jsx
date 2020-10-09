@@ -7,7 +7,7 @@ function MessageBox(props) {
       {props.messages ? (
         <div className="MessageBox">
           {props.messages.map((message, i) => {
-            return <Message message={message.messageText} key={i} />;
+            return <Message message={message.messageText} senderUsername={message.senderUsername} key={i} />;
           })}
         </div>
       ) : null}

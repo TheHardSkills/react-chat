@@ -68,3 +68,7 @@ input {
 button {
   font-size: medium;
 }
+
+.author {
+  font-size: small;
+}

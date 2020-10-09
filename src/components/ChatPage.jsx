@@ -12,7 +12,7 @@ import {
     downloadMessageHistory,
     showAllUsers,
     getMuteInfo,
-
+    disconnect,
     connect,
 
 } from "../eventsListen/socketService";
@@ -24,6 +24,8 @@ function ChatPage() {
     const [allUsers, setAllUsers] = useState([]);
     const [historyMessages, setHistoryMessages] = useState([]);
     const [muteStatus, setMuteStatus] = useState(false);
+    const [banStatus, setBanStatus] = useState(false);
+
 
     const handleSendClick = useCallback((text) => {
         sendUserMessage(text);
@@ -34,7 +36,6 @@ function ChatPage() {
         connect();
         function updateUsers(users) {
             setUsers(users);
-            console.log("users", users);
 
         }
         showOnlineUsers(updateUsers);
@@ -45,14 +46,18 @@ function ChatPage() {
 
         showAllUsers((allUsers) => {
             setAllUsers(allUsers);
-            console.log("allUsers", allUsers);
         });
 
         downloadMessageHistory((messages) => {
             setHistoryMessages(messages);
         });
-        getMuteInfo((banStatus) => {
-            setMuteStatus(banStatus);
+
+        getMuteInfo((muteStatus) => {
+            setMuteStatus(muteStatus);
+        });
+
+        disconnect(() => {
+            setBanStatus(!banStatus)
         })
 
         return () => {

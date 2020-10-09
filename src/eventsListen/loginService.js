@@ -1,7 +1,6 @@
 const sendRequestWithUserData = async (userInfo) => {
   let username = userInfo.inputUsername;
   let password = userInfo.inputPassword;
-  console.log("username", username, "password", password);
 
   const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
   const resultUsernameCheck = format.test(username);
