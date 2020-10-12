@@ -1,4 +1,6 @@
 import React, { useState, useCallback } from "react";
+import { Row, Col, Container } from 'react-bootstrap';
+
 import "../App.css";
 import { sendRequestWithUserData } from "../eventsListen/loginService";
 
@@ -21,19 +23,23 @@ function LoginPage() {
   };
 
   return (
-    <div>
-      <form>
-        <input value={inputUsername} onChange={handleUsernameChange} />
-        <input
-          value={inputPassword}
-          onChange={handlePasswordChange}
-          type="password"
-        />
-        <button type="button" onClick={handleSendClick}>
-          Sign in
+    <Container>
+      <Row>
+        <Col xs={12}>
+          <form>
+            <input value={inputUsername} onChange={handleUsernameChange} />
+            <input
+              value={inputPassword}
+              onChange={handlePasswordChange}
+              type="password"
+            />
+            <button className="signInBttn" type="button" onClick={handleSendClick}>
+              Sign in
         </button>
-      </form>
-    </div>
+          </form>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

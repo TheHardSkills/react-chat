@@ -106,3 +106,13 @@ button {
 p {
   opacity: 1;
 }
+
+.signInBttn {
+  margin-left: 1%;
+}
+@media screen and (max-width: 960px) {
+  .signInBttn {
+    display: block;
+    margin: auto;
+  }
+}
