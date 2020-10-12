@@ -53,7 +53,7 @@ function ChatPage() {
         });
 
         disconnect(() => {
-            setBanStatus(!banStatus)
+            setBanStatus(banStatus => !banStatus)
         })
 
         return () => {

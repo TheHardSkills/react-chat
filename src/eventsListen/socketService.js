@@ -46,6 +46,7 @@ const banUser = (banUserId) => {
 };
 
 const getMuteInfo = (cbck) => {
+  //ссылка на ф-ю - колбэк
   socket.on("muted", () => {
     cbck(true);
   });
