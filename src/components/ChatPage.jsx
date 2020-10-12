@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Row, Col, Container } from 'react-bootstrap';
 
 import MessageBox from "./MessageBox";
 import UsersBlock from "./UsersBlock";
@@ -62,16 +63,24 @@ function ChatPage() {
     const currentUsername = localStorage.getItem("username");
 
     return (
-        <>
-            <MessageForm onSendClick={handleSendClick} muteStatus={muteStatus} />
-            <MessageBox messages={historyMessages} currentUserName={currentUsername} />
-            <UsersBlock users={users} />
-
-            { allUsers
-                ? <AllUsersBlock users={allUsers} />
-                : null
-            }
-        </>
+        <Container>
+            <Row>
+                <Col lg md={3} xs={12} className="msgComponent">
+                    <MessageForm onSendClick={handleSendClick} muteStatus={muteStatus} />
+                </Col>
+                <Col lg md={3} xs={12}>
+                    <MessageBox messages={historyMessages} currentUserName={currentUsername} />
+                </Col>
+                <Col lg md={3} xs={6}>
+                    <UsersBlock users={users} />
+                </Col>
+                {allUsers
+                    ?
+                    <Col lg md={3} xs={6}><AllUsersBlock users={allUsers} /></Col>
+                    : null
+                }
+            </Row>
+        </Container>
     );
 }
 

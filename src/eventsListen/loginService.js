@@ -1,6 +1,3 @@
-import createHistory from "history/createBrowserHistory";
-const history = createHistory();
-
 const sendRequestWithUserData = async (userInfo) => {
   let username = userInfo.inputUsername;
   let password = userInfo.inputPassword;
@@ -29,7 +26,6 @@ const sendRequestWithUserData = async (userInfo) => {
   localStorage.setItem("token", token);
   if (localStorage.getItem("token")) {
     document.location = "http://localhost:3000/chat";
-    //history.push("/chat");
   }
 };
 

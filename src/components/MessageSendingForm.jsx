@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Row, Col, Container } from 'react-bootstrap';
 
 function MessageForm(props) {
   const [inputText, setInputText] = useState("");
@@ -17,14 +18,12 @@ function MessageForm(props) {
   };
 
   return (
-    <div className="messageForm">
-      <form>
-        <input value={inputText} onChange={handleChange} />
-        <button type="button" onClick={handleSend} disabled={props.muteStatus}>
-          Send message
-        </button>
-      </form>
-    </div>
+    <form className="messageForm">
+      <input value={inputText} onChange={handleChange} />
+      <button type="button" onClick={handleSend} disabled={props.muteStatus}>
+        Send message
+              </button>
+    </form>
   );
 }
 
