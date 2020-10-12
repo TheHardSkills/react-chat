@@ -18,16 +18,15 @@ body {
   margin-top: 2px;
   background: #a3b0ec;
   border-radius: 20px;
-  width: 200px;
+  width: 90%;
   opacity: 0.8;
 }
 
 .adminUserBlock {
   border: 1px solid rgb(42, 114, 223);
-  margin-top: 2px;
   background: #a3b0ec;
   border-radius: 20px;
-  width: 200px;
+  width: 90%;
   opacity: 0.8;
 }
 
@@ -35,30 +34,28 @@ body {
   border: 1px solid #a3b0ec;
   border-radius: 20px;
   color: #a3b0ec;
-  margin-top: 2%;
-  margin-left: 5%;
+  margin: 2%;
   width: 40%;
   display: inline-block;
   height: 810px;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 .UsersBlock {
   color: #202020;
-  width: 30%;
+  width: 25%;
   display: inline-block;
-  margin-left: 5%;
-  margin-top: 2%;
+  margin: 2%;
   height: 400px;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 .AllUsersBlock {
-  margin-top: 2%;
+  margin: 2%;
   display: inline-block;
-  margin-left: 5%;
   height: 400px;
-  margin-right: 1%;
+  width: 25%;
+  overflow-y: auto;
 }
 
 .messageForm {

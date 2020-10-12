@@ -1,5 +1,7 @@
 import io from "socket.io-client";
+import createHistory from "history/createBrowserHistory";
 
+const history = createHistory();
 const currentToken = localStorage.getItem("token");
 let socket;
 
@@ -61,6 +63,7 @@ const unsubscribe = () => {
 const disconnect = () => {
   socket.on("disconnect", () => {
     document.location = "http://localhost:3000/";
+    //history.push("/");
   });
 };
 

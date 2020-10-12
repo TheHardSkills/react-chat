@@ -47,11 +47,6 @@ function ChatPage() {
         showAllUsers((allUsers) => {
             setAllUsers(allUsers);
         });
-
-        downloadMessageHistory((messages) => {
-            setHistoryMessages(messages);
-        });
-
         getMuteInfo((muteStatus) => {
             setMuteStatus(muteStatus);
         });
