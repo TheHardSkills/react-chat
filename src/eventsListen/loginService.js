@@ -19,10 +19,11 @@ const sendRequestWithUserData = async (userInfo) => {
 
   const { error, token } = await result.json();
   if (error) {
+    document.location = "http://localhost:3000/";
     alert(error);
     return;
   }
-
+  console.log("ssssss");
   localStorage.setItem("token", token);
   if (localStorage.getItem("token")) {
     document.location = "http://localhost:3000/chat";

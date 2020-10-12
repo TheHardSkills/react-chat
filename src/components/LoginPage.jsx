@@ -1,10 +1,8 @@
 import React, { useState, useCallback } from "react";
 import "../App.css";
-import { useHistory } from "react-router-dom";
 import { sendRequestWithUserData } from "../eventsListen/loginService";
 
 function LoginPage() {
-  const history = useHistory();
 
   const [inputUsername, setInputUsername] = useState("");
   const [inputPassword, setInputPassword] = useState("");
@@ -20,7 +18,6 @@ function LoginPage() {
   const handleSendClick = () => {
     sendRequestWithUserData({ inputUsername, inputPassword });
     localStorage.setItem("username", inputUsername);
-    history.push("/chat");
   };
 
   return (
